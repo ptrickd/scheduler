@@ -1,0 +1,43 @@
+GUI
+	label week
+	label schedule/request
+	total hours/week
+	total hours/day
+	enter employee info
+	
+file
+	save table
+	check file exist
+	load table
+	quit
+	
+tools
+	add employee
+	erase employee
+	new week - choice calendar
+	change week
+	get schedule
+	get request
+	get today date
+	
+double click - pop up windows	
+	modify cell schedule
+	modify cell request
+
+table schedule
+table request	
+
+compare tables
+	warning 
+
+Data Formatting
+employee.txt
+iD -- First Name -- Last Name -- Wages
+schedule.txt
+Date -- iD -- Mon -- Tue -- Wed -- Thu -- Fri -- Sat -- Sun
+request.txt
+Date -- iD -- Mon -- Tue -- Wed -- Thu -- Fri -- Sat -- Sun
+
+***20/05/15#
+
+John Smith # OFF		OFF		  16:00 TO 21:00

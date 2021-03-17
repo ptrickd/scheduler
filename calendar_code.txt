@@ -1,0 +1,14 @@
+
+
+get_calendar_frame(self): from gui
+	display the number from get_calendar
+
+get_calendar(self, select=None): from table
+	format the number send to calendar frame
+	return date month first_day
+ 
+selection_calendar(self): from gui
+	keep a note on witch week is selected
+	
+???create var_calendar(self): from table	
+	year, month, day

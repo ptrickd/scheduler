@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 from table import *
+from calendar import calendar
 
 
 class Main_Frame(tk.Frame):
@@ -10,6 +11,7 @@ class Main_Frame(tk.Frame):
         self.master = master
         # title of windows
         self.master.title("The Scheduler")
+        self.master["bg"] = "DarkOliveGreen1"
         self.master["height"] = "600"
         self.master["width"] = "1200"
         self.master.maxsize(1200, 600)
@@ -36,9 +38,11 @@ class Main_Frame(tk.Frame):
 
         # create menubar
         self.menu_bar = tk.Menu(self.master)
+        self.menu_bar["bg"] = "DarkOliveGreen4"
 
         # create a sub menu "file"
         self.menu_file = tk.Menu(self.menu_bar)
+        self.menu_file["bg"] = "DarkOliveGreen1"
         self.menu_file.add_command(label="New")
         self.menu_file.add_command(label="Load")
         self.menu_file.add_separator()
@@ -85,41 +89,13 @@ class Main_Frame(tk.Frame):
         choice = ["Java", "Python", "C"]
         self.combo_box = ttk.Combobox(self.left_frame, width=width_left,
                                       values=choice)
-
-        # treeview
-        employees = ["Employee 1", "Employee 2", "Employee 3", "Employee 4"]
-        self.treeview = ttk.Treeview(self.right_frame)
-        self.treeview['columns'] = ('Monday', 'Tuesday', 'Wednesday',
-                                    'Thursday', 'Friday',
-                                    'Saturday', 'Sunday')
-        week_days = ['Monday', 'Tuesday', 'Wednesday',
-                     'Thursday', 'Friday',
-                     'Saturday', 'Sunday']
-
-        for x in week_days:
-            self.treeview.column(x, width=50, anchor='center')
-
-        self.treeview.column('#0', width=175)
-        self.treeview.column('#1', width=67)
-        self.treeview.column('#2', width=67)
-        self.treeview.column('#3', width=67)
-        self.treeview.column('#4', width=67)
-        self.treeview.column('#5', width=67)
-        self.treeview.column('#6', width=67)
-        self.treeview.column('#7', width=67)
-
-        for x in week_days:
-            self.treeview.heading(x, text=x)
-
-        init_days = ['OFF', 'OFF', 'OFF', 'OFF', 'OFF', 'OFF', 'OFF']
-        # count = 4
-        for x in employees:
-            self.treeview.insert('', 'end', text=x, values=init_days)
+        
+        
         # a = self.treeview.column('#1', option=width)
         # print(a)
 
         self.right_frame.bind("<Button-1>", self.mouse)
-        self.treeview.bind("<Button-1>", self.mouse)
+        # self.treeview.bind("<Button-1>", self.mouse)#refer to calendar.py
         # add items to the frame
         self.add_employee.pack()
         self.update_employee.pack()
@@ -127,7 +103,8 @@ class Main_Frame(tk.Frame):
         self.get_calendar.pack()
         self.label_week.pack()
         self.label_schedule.pack()
-        self.treeview.pack()
+        calendar(self)
+       
         self.combo_box.pack()
         self.label_bottom.pack()
 

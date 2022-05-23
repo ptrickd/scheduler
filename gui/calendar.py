@@ -1,81 +1,50 @@
 import tkinter as tk
 from tkinter import ttk
 
+from fakeData import employeeSchedule
+
 def calendar(self):    
-    # need to start need frame to use grid cmponenet
-    color = "CadetBlue1"
-    employees = ["Employee 1", "Employee 2", "Employee 3", "Employee 4"]
-    # self.panedWindow = ttk.Panedwindow(self)
-    # self.panedWindow["bg"] = "red"
-    # self.panedWindow.pack()
+    #constants
+    heigth_rigth = 2
+    width_rigth = 89
+    bgColor = "grey35"
 
-    obj = {
-        "monday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "tuesday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "wednesday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "thursday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "friday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "saturday": {
-            "start": '4',
-            "finish": '8'
-            },
-        "sunday": {
-            "start": '4',
-            "finish": '8'
-            }
-        }
+    # need to start need frame to use grid component
 
-    # a_dict = {'color': 'blue', 'fruit': 'apple', 'pet': 'dog'}
-    # for key in a_dict:
-    #      print(key)
-
-    self.calendar_frame = tk.Frame(self)
+    self.calendar_frame = tk.Frame(self, bg=bgColor)
     self.calendar_frame.pack()
+    
+    # separator = ttk.Separator(self.calendar_frame, orient='horizontal')
+
+    # create label display schedule/request
+    label_schedule = tk.Label(self.calendar_frame, width=width_rigth, bg=bgColor,
+                                    height=heigth_rigth, padx=10, pady=10)
+    label_schedule["text"] = "Schedule"
+    label_schedule["anchor"] = "s"
+    label_schedule["justify"] = "center"
+
+    # create label display week
+    label_week = tk.Label(self.calendar_frame, width=width_rigth, bg=bgColor,
+                                height=heigth_rigth, padx=10, pady=10)
+    label_week["text"] = "Week May 2 to May 9"
 
     days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-
-    caption = 'start: ' + obj[days[0]]["start"] + '\n' + 'until:' + obj[days[0]]["finish"]
-    l_monday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["tuesday"]["start"] + '\n' + 'until:' + obj["tuesday"]["finish"]
-    l_tuesday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["wednesday"]["start"] + '\n' + 'until:' + obj["wednesday"]["finish"]
-    l_wednesday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["thursday"]["start"] + '\n' + 'until:' + obj["thursday"]["finish"]
-    l_thursday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["friday"]["start"] + '\n' + 'until:' + obj["friday"]["finish"]
-    l_friday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["saturday"]["start"] + '\n' + 'until:' + obj["saturday"]["finish"]
-    l_saturday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-    caption = 'start: ' + obj["sunday"]["start"] + '\n' + 'until:' + obj["sunday"]["finish"]
-    l_sunday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
-
-   
     
-    labels = [l_monday, l_tuesday, l_wednesday, l_thursday, l_friday, l_saturday, l_sunday]
-    
+    labels = []
+
+    count = 0
+    for day in days:
+        caption = '\n start: ' + employeeSchedule[days[0]]["start"] + '\n\n\n' + ' end:   ' + employeeSchedule[days[0]]["finish"] + '\n'
+        labels.insert(0, ttk.Label(self.calendar_frame, font=('Arial', 15), text=caption, width=10, background=bgColor, borderwidth=1, relief="solid"))
+        count += 1
+
+    label_schedule.grid(column=0,row=0, columnspan=7)
+    #sticky from east limit to west limit
+    # separator.grid(column=1,row=1, columnspan=5, sticky='ew')
+    label_week.grid(column=0,row=2, columnspan=7)
+
     #create the row of every day of the week
     count = 0
     for day in labels:
-        day.grid(column=count, row=0)
+        day.grid(column=count, row=3)
         count += 1

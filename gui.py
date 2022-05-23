@@ -17,10 +17,10 @@ class Main_Frame(tk.Frame):
         self.master = master
         # title of windows
         self.master.title("The Scheduler")
-        self.master["bg"] = "DarkOliveGreen1"
+        # self.master["bg"] = "DarkOliveGreen1"
         self.master["height"] = "600"
         self.master["width"] = "1200"
-        self.master.maxsize(1200, 600)
+        # self.master.maxsize(1200, 600)
         # not sure about expand
         self.pack(expand=True)
         self.create_widgets()
@@ -38,17 +38,17 @@ class Main_Frame(tk.Frame):
 
         # create a frame to take the left widget
         self.right_frame = tk.Frame(self.master)
-        self.right_frame["bg"] = "grey"
+        # self.right_frame["bg"] = "grey"
         self.right_frame["borderwidth"] = 1
         self.right_frame.pack(side="right")
 
         # create menubar
         self.menu_bar = tk.Menu(self.master)
-        self.menu_bar["bg"] = "DarkOliveGreen4"
+        # self.menu_bar["bg"] = "DarkOliveGreen4"
 
         # create a sub menu "file"
         self.menu_file = tk.Menu(self.menu_bar)
-        self.menu_file["bg"] = "DarkOliveGreen1"
+        # self.menu_file["bg"] = "DarkOliveGreen1"
         self.menu_file.add_command(label="New")
         self.menu_file.add_command(label="Load")
         self.menu_file.add_separator()
@@ -75,17 +75,9 @@ class Main_Frame(tk.Frame):
         self.get_calendar = tk.Button(self.left_frame, text="Calendar", width=width_left,
                                       height=heigth_left, command=self.get_calendar_frame)
 
-        # create label display week
-        self.label_week = tk.Label(self.right_frame, width=width_rigth,
-                                   height=heigth_rigth, padx=10, pady=10)
-        self.label_week["text"] = "Week May 2 to May 9"
+       
 
-        # create label display schedule/request
-        self.label_schedule = tk.Label(self.right_frame, width=width_rigth,
-                                       height=heigth_rigth, padx=10, pady=10)
-        self.label_schedule["text"] = "Schedule"
-        self.label_schedule["anchor"] = "s"
-        self.label_schedule["justify"] = "center"
+        
 
         # create label empty
         self.label_bottom = tk.Label(self.right_frame, width=width_rigth,
@@ -96,10 +88,7 @@ class Main_Frame(tk.Frame):
         self.combo_box = ttk.Combobox(self.left_frame, width=width_left,
                                       values=choice)
         
-        
-        # a = self.treeview.column('#1', option=width)
-        # print(a)
-
+      
         self.right_frame.bind("<Button-1>", self.mouse)
         # self.treeview.bind("<Button-1>", self.mouse)#refer to calendar.py
         # add items to the frame
@@ -107,9 +96,7 @@ class Main_Frame(tk.Frame):
         self.update_employee.pack()
         self.quit.pack()
         self.get_calendar.pack()
-        self.label_week.pack()
-        self.label_schedule.pack()
-        calendar.calendar(self)
+        calendar.calendar(self.right_frame)
        
         self.combo_box.pack()
         self.label_bottom.pack()

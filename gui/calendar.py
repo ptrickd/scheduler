@@ -47,7 +47,9 @@ def calendar(self):
     self.calendar_frame = tk.Frame(self)
     self.calendar_frame.pack()
 
-    caption = 'start: ' + obj["monday"]["start"] + '\n' + 'until:' + obj["monday"]["finish"]
+    days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+    caption = 'start: ' + obj[days[0]]["start"] + '\n' + 'until:' + obj[days[0]]["finish"]
     l_monday = ttk.Label(self.calendar_frame, text=caption,background=color, width=10)
 
     caption = 'start: ' + obj["tuesday"]["start"] + '\n' + 'until:' + obj["tuesday"]["finish"]

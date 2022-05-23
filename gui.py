@@ -1,8 +1,14 @@
+# global import
+import sys
+sys.path.insert(0, './gui')
+
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+
+#local import
 from table import *
-from calendar import calendar
+from gui import calendar
 
 
 class Main_Frame(tk.Frame):
@@ -103,7 +109,7 @@ class Main_Frame(tk.Frame):
         self.get_calendar.pack()
         self.label_week.pack()
         self.label_schedule.pack()
-        calendar(self)
+        calendar.calendar(self)
        
         self.combo_box.pack()
         self.label_bottom.pack()

@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 
+from sqlalchemy import column
+
 from fakeData import employeesSchedule
 
 def calendar(self):    
@@ -35,7 +37,6 @@ def calendar(self):
     #make row by employee
     count = 0
     for employee in employeesSchedule:
-        print(employee["name"])
          # # #create label for name of the employee
         labels.insert(0, ttk.Label(
             self.calendar_frame, 
@@ -46,82 +47,70 @@ def calendar(self):
             borderwidth=1,
             anchor="center",
             relief="solid"
-            )
-            )
+            ))
         
         for day in employee["week"]:
-            print(day)
-            # caption = '\n start: ' + day[0] + '\n\n' + ' end:   ' + day[1] + '\n'
-            # labels.insert(0, ttk.Label(self.calendar_frame, font=('Arial', 15), text=caption, width=10, background=bgColor, borderwidth=1, relief="solid"))
+            start = employee["week"][day]["start"]
+            finish = employee["week"][day]["finish"]
+            caption = '\n start: ' + start + '\n\n' + ' end:   ' + finish + '\n'
+               
+            labels.insert(0, ttk.Label(
+                self.calendar_frame, 
+                font=('Arial', 15), 
+                text=caption, 
+                width=10, 
+                background=bgColor, 
+                borderwidth=1, 
+                relief="solid")
+                )
 
-        # count += 1
 
-
-
-    # labels.insert(0, ttk.Label(
-    #         self.calendar_frame, 
-    #         text="\n\n" + employee[0] + "\n\n", 
-    #         font=('Arial', 15), 
-    #         width=10, 
-    #         background=bgColor, 
-    #         borderwidth=1,
-    #         anchor="center",
-    #         relief="solid"
-    #         )
-    #         )
-
-# for day in employee:
-        #     print(day)
-        # count = 0
-        
-        # for day in days:
-        #     caption = '\n start: ' + employee[days[0]]["start"] + '\n\n' + ' end:   ' + employee[days[0]]["finish"] + '\n'
-        #     labels.insert(0, ttk.Label(self.calendar_frame, font=('Arial', 15), text=caption, width=10, background=bgColor, borderwidth=1, relief="solid"))
-        #     count += 1
-
-       
-
-        # #gridding
+    # #gridding
     rowCount = 0
-        # label_schedule.grid(column=0,row=rowCount, columnspan=8)
-        # rowCount += 1
-        # #sticky from east limit to west limit
-        # # separator.grid(column=1,row=1, columnspan=5, sticky='ew')
-        # label_week.grid(column=0,row=rowCount, columnspan=8)
-        # rowCount += 1
+    label_schedule.grid(column=0,row=rowCount, columnspan=8)
+    rowCount += 1
+    #sticky from east limit to west limit
+    # separator.grid(column=1,row=1, columnspan=5, sticky='ew')
+    label_week.grid(column=0,row=rowCount, columnspan=8)
+    rowCount += 1
         
-        # #create dict keyword atttribute for styling 
+    # #create dict keyword atttribute for styling 
+    styleLabel = {
+        "fontName":"Arial",
+        "fontSize":15,
+        "width":10,
+        "background":bgColor,
+        "borderwidth":1, 
+        "relief":"solid"
+        }
         
-        # styleLabel = {
-        #     "fontName":"Arial",
-        #     "fontSize":15,
-        #     "width":10,
-        #     "background":bgColor,
-        #     "borderwidth":1, 
-        #     "relief":"solid"
-        #     }
-        
-    
-
-
-        # #create the labels with the name of the days of the weeks 
-        # count = 0
-        # for day in days:
-        #     dayLabel = ttk.Label(self.calendar_frame, text=days[count])
-        #     dayLabel.config(
-        #         font=(styleLabel["fontName"], styleLabel["fontSize"]), 
-        #         width=styleLabel["width"],
-        #         background=styleLabel["background"], 
-        #         borderwidth=styleLabel["borderwidth"], 
-        #         relief=styleLabel["relief"],
-        #         anchor="center"
-        #     )
-        #     dayLabel.grid(column=count+1, row=rowCount, ipady=10)
-        #     count += 1
-        # rowCount += 1
-
-        # #create the row of every day of the week
+    #create the labels with the name of the days of the weeks 
     count = 0
-    for day in labels:
-        day.grid(column=count, row=rowCount)
+    for day in days:
+        dayLabel = ttk.Label(self.calendar_frame, text=days[count])
+        dayLabel.config(
+            font=(styleLabel["fontName"], styleLabel["fontSize"]), 
+            width=styleLabel["width"],
+            background=styleLabel["background"], 
+            borderwidth=styleLabel["borderwidth"], 
+            relief=styleLabel["relief"],
+            anchor="center"
+        )
+        dayLabel.grid(column=count+1, row=rowCount, ipady=10)
+       
         count += 1
+    rowCount += 1
+
+    #gridding all labels with the names and the shifts  
+    count = 0
+    labels.reverse()
+    for cell in labels:
+
+        cell.grid(column=count, row=rowCount)
+        count += 1
+        if count == 8:
+            count = 0
+            rowCount += 1
+        
+
+    

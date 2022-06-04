@@ -53,7 +53,7 @@ employeesSchedule = [
                 "start": '12',
                 "finish": '4'
                 },
-    "friday": {
+            "friday": {
                 "start": '12',
                 "finish": '4'
                 },

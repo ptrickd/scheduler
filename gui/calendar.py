@@ -8,7 +8,7 @@ from fakeData import employeesSchedule
 def calendar(self):    
     #constants
     heigth_rigth = 2
-    width_rigth = 89
+    width_rigth = 95
     bgColor = "grey35"
 
     # need to start need frame to use grid component
@@ -52,13 +52,13 @@ def calendar(self):
         for day in employee["week"]:
             start = employee["week"][day]["start"]
             finish = employee["week"][day]["finish"]
-            caption = '\n start: ' + start + '\n\n' + ' end:   ' + finish + '\n'
+            caption = '\n start:' + start + '\n\n' + ' end:  ' + finish + '\n'
                
             labels.insert(0, ttk.Label(
                 self.calendar_frame, 
                 font=('Arial', 15), 
                 text=caption, 
-                width=10, 
+                width=15, 
                 background=bgColor, 
                 borderwidth=1, 
                 relief="solid")
@@ -78,7 +78,7 @@ def calendar(self):
     styleLabel = {
         "fontName":"Arial",
         "fontSize":15,
-        "width":10,
+        "width":15,
         "background":bgColor,
         "borderwidth":1, 
         "relief":"solid"

@@ -5,32 +5,32 @@ employeesSchedule = [
         "name":"Brad",
         "week": {
             "monday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PMPM',
+                "finish": '20:00PM'
                 },
             "tuesday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 },
             "wednesday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 },
             "thursday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 },
             "friday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 },
             "saturday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 },
             "sunday": {
-                "start": '4',
-                "finish": '8'
+                "start": '16:00PM',
+                "finish": '20:00PM'
                 }
             }
     },
@@ -38,32 +38,32 @@ employeesSchedule = [
         "name":"Cindy",
         "week": {
             "monday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "tuesday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "wednesday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "thursday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "friday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "saturday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 },
             "sunday": {
-                "start": '12',
-                "finish": '4'
+                "start": '12:00PM',
+                "finish": '16:00PM'
                 }
             }
     }

@@ -27,7 +27,7 @@ class Main_Frame(tk.Frame):
 
     def create_widgets(self):
         heigth_left = 4
-        width_left = 18
+        width_left = 12
         heigth_rigth = 2
         width_rigth = 89
         # create a frame to take the left widget

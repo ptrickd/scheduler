@@ -7,7 +7,7 @@ from fakeData import employeesSchedule
 from weekPicker import weekPicker
 
 def calendar(self):
-        
+
     #constants
     heigth_rigth = 2
     width_rigth = 95
@@ -57,18 +57,18 @@ def calendar(self):
         for day in employee["week"]:
             start = employee["week"][day]["start"]
             finish = employee["week"][day]["finish"]
-            caption = '\n start:' + start + '\n\n' + ' end:  ' + finish + '\n'
+            caption = '\n' + start + '\n' +'  to' + '\n'  + finish + '\n'
                
             labels.insert(0, ttk.Label(
                 self.calendar_frame, 
                 font=('Arial', 15), 
                 text=caption, 
-                width=15, 
+                width=12, 
                 background=bgColor, 
                 borderwidth=1, 
-                relief="solid"
+                relief="solid",
+                anchor='center'
                 ))
-
 
     ##gridding
     rowCount = 0
@@ -83,7 +83,7 @@ def calendar(self):
     styleLabel = {
         "fontName":"Arial",
         "fontSize":15,
-        "width":15,
+        "width":12,
         "background":bgColor,
         "borderwidth":1, 
         "relief":"solid"

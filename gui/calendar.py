@@ -4,8 +4,10 @@ from tkinter import ttk
 from sqlalchemy import column
 
 from fakeData import employeesSchedule
+from weekPicker import weekPicker
 
-def calendar(self):    
+def calendar(self):
+        
     #constants
     heigth_rigth = 2
     width_rigth = 95
@@ -19,18 +21,21 @@ def calendar(self):
     # separator = ttk.Separator(self.calendar_frame, orient='horizontal')
 
     # create label display schedule/request
-    label_schedule = tk.Label(self.calendar_frame, width=width_rigth, bg=bgColor,
-                                    height=heigth_rigth, padx=10, pady=10)
+    label_schedule = tk.Label(
+        self.calendar_frame, 
+        width=width_rigth, 
+        bg=bgColor,
+        height=heigth_rigth, 
+        font=('Arial', 15),
+        padx=5, 
+        pady=5
+        )
+
     label_schedule["text"] = "Schedule"
-    label_schedule["anchor"] = "s"
+    label_schedule["anchor"] = "n"
     label_schedule["justify"] = "center"
 
-    # create label display week
-    label_week = tk.Label(self.calendar_frame, width=width_rigth, bg=bgColor,
-                                height=heigth_rigth, padx=10, pady=10)
-    label_week["text"] = "Week May 2 to May 9"
-
-    days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     labels = []
 
@@ -61,20 +66,20 @@ def calendar(self):
                 width=15, 
                 background=bgColor, 
                 borderwidth=1, 
-                relief="solid")
-                )
+                relief="solid"
+                ))
 
 
-    # #gridding
+    ##gridding
     rowCount = 0
     label_schedule.grid(column=0,row=rowCount, columnspan=8)
     rowCount += 1
+    weekPicker(calendar_frame=self.calendar_frame, bgColor=bgColor, rowCount=rowCount)
     #sticky from east limit to west limit
     # separator.grid(column=1,row=1, columnspan=5, sticky='ew')
-    label_week.grid(column=0,row=rowCount, columnspan=8)
     rowCount += 1
         
-    # #create dict keyword atttribute for styling 
+    ##create dict keyword atttribute for styling 
     styleLabel = {
         "fontName":"Arial",
         "fontSize":15,

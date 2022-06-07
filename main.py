@@ -4,7 +4,7 @@ import tkinter as tk
 import file
 from file import *
 root = tk.Tk()
-root.geometry("1000x500")
+root.geometry("1100x400")
 app = Main_Frame(master=root)
 app.mainloop()
 

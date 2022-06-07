@@ -10,6 +10,7 @@ from tkinter import *
 from table import *
 from gui import calendar
 from gui import main_menu
+from gui import side_buttons
 
 
 class Main_Frame(tk.Frame):
@@ -33,73 +34,70 @@ class Main_Frame(tk.Frame):
         width_rigth = 89
 
         main_menu.main_menu(self.master) 
+
         # create a frame to take the left widget
         self.left_frame = tk.Frame(self.master)
         self.left_frame["bg"] = "black"
         self.left_frame["borderwidth"] = 1
-        self.left_frame.pack(side="left")
+        self.left_frame.pack(expand=True, side="left")
 
         # create a frame to take the left widget
         self.right_frame = tk.Frame(self.master)
-        # self.right_frame["bg"] = "grey"
+        self.right_frame["bg"] = "grey"
         self.right_frame["borderwidth"] = 1
-        self.right_frame.pack(side="right")
-
-               
-
-        # create a button to add new employees
-        self.add_employee = tk.Button(self.left_frame, width=width_left,
-                                      height=heigth_left, command=self.add_emp_frame)
-        self.add_employee["text"] = "Add New Employee"
-
-        # create a button update info of employee
-        self.update_employee = tk.Button(self.left_frame, width=width_left,
-                                         height=heigth_left, command=self.update_emp_frame)
-        self.update_employee["text"] = "Update Employee Info"
-
-        # quit application
-        self.quit = tk.Button(self.left_frame, text="QUIT", fg="red",
-                              width=width_left, height=heigth_left,
-                              command=self.master.destroy)
-        # create a button to get the calendar
-        self.get_calendar = tk.Button(self.left_frame, text="Calendar", width=width_left,
-                                      height=heigth_left, command=self.get_calendar_frame)
-
-       
-
-        
+        self.right_frame.pack(expand=True, side="right", anchor='center')
 
         # create label empty
-        self.label_bottom = tk.Label(self.right_frame, width=width_rigth,
-                                     height=heigth_rigth, padx=10, pady=10)
+        # self.label_bottom = tk.Label(self.right_frame, width=width_rigth,
+        #                              height=heigth_rigth, padx=10, pady=10)
       
         self.right_frame.bind("<Button-1>", self.mouse)
         # self.treeview.bind("<Button-1>", self.mouse)#refer to calendar.py
         # add items to the frame
-        self.add_employee.pack()
-        self.update_employee.pack()
-        self.quit.pack()
-        self.get_calendar.pack()
+        side_buttons.fct(
+            self.master, 
+            self.left_frame, 
+            width_left, 
+            heigth_left, 
+            self.add_emp_frame, 
+            self.update_emp_frame, 
+            self.get_calendar_frame
+            )
 
         calendar.calendar(self.right_frame)
-        
-       
-        
-        self.label_bottom.pack()
 
     def add_emp_frame(self):
         newWindow = tk.Toplevel(self.master)
         newWindow.title("Employee Info")
         newWindow.resizable(height=0, width=0)
 
-        new_frame = tk.Frame(newWindow, bd=2, padx=10, pady=10, relief=GROOVE)
+        new_frame = tk.Frame(
+            newWindow, 
+            bd=2, 
+            padx=10, 
+            pady=10, 
+            relief=GROOVE
+            )
         new_frame.pack()
 
         label_first_name = tk.Label(
-            new_frame, text="First Name", padx=10, pady=10)
+            new_frame, 
+            text="First Name", 
+            padx=10, 
+            pady=10
+            )
         label_last_name = tk.Label(
-            new_frame, text="Last Name", padx=10, pady=10)
-        label_position = tk.Label(new_frame, text="Position", padx=10, pady=10)
+            new_frame, 
+            text="Last Name", 
+            padx=10, 
+            pady=10
+            )
+        label_position = tk.Label(
+            new_frame, 
+            text="Position", 
+            padx=10, 
+            pady=10
+            )
         label_wage = tk.Label(new_frame, text="Wage", padx=10, pady=10)
         label_space = tk.Label(new_frame, width=5)
 

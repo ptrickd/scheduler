@@ -1,8 +1,21 @@
-# from Main_Window import Main_Window
+# global import
+import sys
+sys.path.insert(0, './gui')
+sys.path.insert(0, './model')
+
+
 from gui1 import Main_Frame
 import tkinter as tk
+
+
+from model.db import db
+# from db import db
+# from db import db 
 import file
 from file import *
+
+connect = db.connect_sql()
+
 root = tk.Tk()
 root.geometry("1100x400")
 app = Main_Frame(master=root)

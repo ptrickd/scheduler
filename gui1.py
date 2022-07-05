@@ -11,6 +11,7 @@ from table import *
 from gui import calendar
 from gui import main_menu
 from gui import side_buttons
+from gui import add_emp_frame
 
 
 class Main_Frame(tk.Frame):
@@ -39,7 +40,7 @@ class Main_Frame(tk.Frame):
         self.left_frame = tk.Frame(self.master)
         self.left_frame["bg"] = "black"
         self.left_frame["borderwidth"] = 1
-        self.left_frame.pack(expand=True, side="left")
+        self.left_frame.pack(expand=True, side="left", anchor='center')
 
         # create a frame to take the left widget
         self.right_frame = tk.Frame(self.master)
@@ -59,75 +60,14 @@ class Main_Frame(tk.Frame):
             self.left_frame, 
             width_left, 
             heigth_left, 
-            self.add_emp_frame, 
+            add_emp_frame.fct, 
             self.update_emp_frame, 
             self.get_calendar_frame
             )
 
         calendar.calendar(self.right_frame)
 
-    def add_emp_frame(self):
-        newWindow = tk.Toplevel(self.master)
-        newWindow.title("Employee Info")
-        newWindow.resizable(height=0, width=0)
-
-        new_frame = tk.Frame(
-            newWindow, 
-            bd=2, 
-            padx=10, 
-            pady=10, 
-            relief=GROOVE
-            )
-        new_frame.pack()
-
-        label_first_name = tk.Label(
-            new_frame, 
-            text="First Name", 
-            padx=10, 
-            pady=10
-            )
-        label_last_name = tk.Label(
-            new_frame, 
-            text="Last Name", 
-            padx=10, 
-            pady=10
-            )
-        label_position = tk.Label(
-            new_frame, 
-            text="Position", 
-            padx=10, 
-            pady=10
-            )
-        label_wage = tk.Label(new_frame, text="Wage", padx=10, pady=10)
-        label_space = tk.Label(new_frame, width=5)
-
-        self.entry_first_name = tk.Entry(new_frame, width=25)
-        self.entry_last_name = tk.Entry(new_frame, width=25)
-        self.entry_position = tk.Entry(new_frame, width=25)
-        self.entry_wage = tk.Entry(new_frame, width=25)
-
-        widgets = self.entry_first_name, self.entry_last_name, self.entry_position, self.entry_wage
-
-        button_save = tk.Button(new_frame, text="Save", padx=20,
-                                command=self.save_emp)
-        button_clear = tk.Button(new_frame, text="Clear All", padx=10,
-                                 command=self.clear_emp(widgets))
-        button_read = tk.Button(new_frame, text="Read", padx=20,
-                                command=self.read_emp)
-
-        #command = f_name = text_first_name.get()
-        label_first_name.grid(row=0, column=0)
-        self.entry_first_name.grid(row=0, column=1)
-        label_last_name.grid(row=1, column=0)
-        self.entry_last_name.grid(row=1, column=1)
-        label_position.grid(row=2, column=0)
-        self.entry_position.grid(row=2, column=1)
-        label_wage.grid(row=3, column=0)
-        self.entry_wage.grid(row=3, column=1)
-        button_clear.grid(row=4, column=0)
-        button_save.grid(row=4, column=1)
-        button_read.grid(column=3, row=4)
-        label_space.grid(column=3)
+    
 
     def save_emp(self):
 

@@ -6,6 +6,9 @@ from sqlalchemy import column
 from fakeData import employeesSchedule
 from weekPicker import weekPicker
 
+def clickingEvent(self):
+    print('cell has been clicked')
+
 def calendar(self):
 
     #constants
@@ -31,7 +34,7 @@ def calendar(self):
         pady=5
         )
 
-    label_schedule["text"] = "Schedule"
+    label_schedule["text"] = "        Schedule"
     label_schedule["anchor"] = "n"
     label_schedule["justify"] = "center"
 
@@ -101,6 +104,7 @@ def calendar(self):
             relief=styleLabel["relief"],
             anchor="center"
         )
+        
         dayLabel.grid(column=count+1, row=rowCount, ipady=10)
        
         count += 1
@@ -110,7 +114,7 @@ def calendar(self):
     count = 0
     labels.reverse()
     for cell in labels:
-
+        cell.bind('<Double-1>', clickingEvent)###########################################
         cell.grid(column=count, row=rowCount)
         count += 1
         if count == 8:

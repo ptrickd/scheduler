@@ -6,24 +6,7 @@ from datetime import *
 
 class table():
 
-    def add_emp_table(self, f_name, l_name, pos, wage):
-        print("Name: " + f_name + "\nName: " + l_name + "\nPosition: " + pos)
-        print("wage: " + wage)
-        
-        connection = self.create_table()
-        
-        
-        create_emp = """
-        INSERT INTO
-            emp (first_name, last_name, position, wage)
-        VALUES
-            (?,?,?,?)
-        """
-        var = (f_name, l_name, pos, wage)
-        print("After emp, before query")
-        self.execute_query(connection, create_emp, var)
-        
-        connection.close()
+    
         
     def delete_emp_table(self, iD):
         connection = self.create_table()
@@ -31,23 +14,7 @@ class table():
         delete_emp = "DELETE FROM emp WHERE id = iD"
         execute_query(connexion, delete_emp)
         
-        
-    
-    def connect_sql(self):
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        print("directory: " + dir_path)
-        path = dir_path + "\qwe.sqlite"
-        print("Path: " + path)
-        
-        connection = None
-        try:
-            connection = sqlite3.connect(path)
-            print("connection to SQLite DB sucessful")
-        except Error as e:
-            print(f"The error '{e}' occurred")
-        
-        return connection
-        
+               
     def execute_query(self, connection, query, var):
         print("Query: " + query)
         if var == None:
@@ -78,21 +45,7 @@ class table():
             except Error as e:
                 print(f"The error '{e}' occured")
             
-    def create_table(self):
-        connection = self.connect_sql()
-        
-        create_emp_table = """
-        CREATE TABLE IF NOT EXISTS emp (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            first_name TEXT NOT NULL,
-            last_name TEXT NOT NULL,
-            position TEXT NOT NULL,
-            wage FLOAT
-        );
-        """
-        self.execute_query(connection, create_emp_table, var=None)
-        
-        return connection
+    
     
     def read_emp_table(self):
         connection = self.connect_sql()
